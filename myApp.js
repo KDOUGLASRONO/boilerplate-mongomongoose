@@ -24,11 +24,28 @@ let Douglas = new Person({
 })
 
 const createAndSavePerson = (done) => {
+  let eric = new Person({
+    name:'ERIC KOECH',
+    age:23,
+    favorite_food:["drinks",'yoghurt']
+  })
+  eric.save(function(err,done){
+    if(err) console.error(err);
+    done(null, data);
+  })
   done(null /*, data*/);
 };
 
+var arrayOfPeople = [
+  {name:'Douglas',age:32,favorite_food:["sushi"]},
+  {name:"pyomdo",age:30,favorite_food:["githeri"]},
+  {name:"anto",age:32,favorite_food:["whiskey"]}
+]
 const createManyPeople = (arrayOfPeople, done) => {
-  done(null /*, data*/);
+  Person.create(arrayOfPeople,(err,people)=>{
+    if(err) console.error(err);
+    done(null,people);
+  });
 };
 
 const findPeopleByName = (personName, done) => {
