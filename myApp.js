@@ -56,8 +56,12 @@ const findPeopleByName = (John, done) => {
   });
 };
 
+//find one by food. use Model.findOne
 const findOneByFood = (food, done) => {
-  done(null /*, data*/);
+  Person.findOne({favorite_food:[food]},(err,found)=>{
+    if(err) console.log(err);
+    done(null,found);
+  });
 };
 
 const findPersonById = (personId, done) => {
